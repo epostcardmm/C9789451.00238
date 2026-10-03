@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="my">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ပြန်ချစ်ပါလားမမရယ် ❤️</title>
+    <style>
+        @keyframes liquidGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        body {
+            background: linear-gradient(-45deg, #ff6a88, #ff99ac, #f35588, #7f00ff, #00c6ff);
+            background-size: 400% 400%;
+            animation: liquidGradient 12s ease infinite;
+            font-family: 'Myanmar3', 'Pyidaungsu', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .container {
+            text-align: center;
+            max-width: 480px;
+            width: 90%;
+            z-index: 10;
+            position: relative;
+        }
+
+        img {
+            width: 160px;
+            height: 160px;
+            border-radius: 20px;
+            object-fit: cover;
+            margin-bottom: 15px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+            border: 2px solid rgba(255, 255, 255, 0.6);
+        }
+
+        h1 {
+            color: #fff;
+            font-size: 24px;
+            margin-bottom: 20px;
+            text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+            font-weight: bold;
+        }
+
+        .buttons {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 20px;
+            position: relative;
+            margin-top: 25px;
+            min-height: 90px;
+        }
+
+        button {
+            padding: 12px 28px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            transition: background 0.3s ease;
+        }
+
+        #yesBtn {
+            background: linear-gradient(135deg, rgba(255, 65, 108, 0.95), rgba(255, 75, 43, 0.95));
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.7);
+            box-shadow: 0 8px 25px rgba(255, 65, 108, 0.5);
+            z-index: 5;
+        }
+
+        #yesBtn:hover {
+            box-shadow: 0 12px 30px rgba(255, 65, 108, 0.8);
+            background: linear-gradient(135deg, rgba(255, 65, 108, 1), rgba(255, 75, 43, 1));
+        }
+
+        #noBtn {
+            background: rgba(255, 255, 255, 0.3);
+            color: #fff;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+            transition: left 0.2s ease-out, top 0.2s ease-out;
+        }
+
+        #noBtn:hover {
+            background: rgba(255, 255, 255, 0.5);
+            color: #222;
+        }
+
+        #warning-text {
+            color: #fff;
+            font-size: 16px;
+            margin-top: 20px;
+            font-weight: bold;
+            height: 25px;
+            text-shadow: 0 1px 4px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Realistic Paper Note Styling */
+        .paper-note {
+            background: #fdfbf7;
+            background-image: linear-gradient(#f1e7d0 1px, transparent 1px);
+            background-size: 100% 28px;
+            padding: 25px;
+            border-radius: 20px;
+            box-shadow: 0 20px 45px rgba(0, 0, 0, 0.35);
+            max-height: 480px;
+            overflow-y: auto;
+            text-align: left;
+            color: #2c2c2c;
+            border: 1px solid #dcd1b5;
+            position: relative;
+        }
+
+        .paper-note h2 {
+            color: #d63031;
+            font-size: 20px;
+            margin-top: 0;
+            margin-bottom: 15px;
+            text-align: center;
+            border-bottom: 2px dashed #e8d7be;
+            padding-bottom: 8px;
+        }
+
+        .paper-content {
+            font-size: 16px;
+            line-height: 28px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-weight: 500;
+        }
+
+        /* Final Question inside Paper */
+        #final-section {
+            margin-top: 20px;
+            border-top: 2px dashed #e8d7be;
+            padding-top: 15px;
+            text-align: center;
+            display: none;
+        }
+
+        #final-section p {
+            font-weight: bold;
+            color: #d63031;
+            font-size: 16px;
+            margin-bottom: 12px;
+        }
+
+        .final-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .final-btn-yes {
+            background: #27ae60 !important;
+            color: white !important;
+            padding: 8px 20px !important;
+            font-size: 16px !important;
+            border-radius: 20px !important;
+        }
+
+        .final-btn-no {
+            background: #e74c3c !important;
+            color: white !important;
+            padding: 8px 20px !important;
+            font-size: 16px !important;
+            border-radius: 20px !important;
+        }
+
+        /* Stats List Styling */
+        .stats-box {
+            background: #fff5f5;
+            border: 1px dashed #e8d7be;
+            padding: 12px 15px;
+            border-radius: 12px;
+            margin-top: 15px;
+            text-align: left;
+        }
+
+        .stats-box h3 {
+            color: #d63031;
+            font-size: 15px;
+            margin: 0 0 8px 0;
+            text-align: center;
+        }
+
+        .stats-box ul {
+            margin: 0;
+            padding-left: 20px;
+            font-size: 14px;
+            line-height: 22px;
+            color: #444;
+        }
+    </style>
+</head>
+<body>
+    <div class="container" id="main-container">
+        <!-- Cute GIF -->
+        <img src="https://media1.tenor.com/m/J9mOaXMbKygAAAAC/mochi-pet.gif" alt="Cute GIF" id="main-gif">
+        <h1 id="main-title">9 - 1 =8 လားမမ ?❤️</h1>
+        <div class="buttons">
+            <button id="yesBtn" onclick="handleYes()">💖 Yes</button>
+            <button id="noBtn" onclick="handleNo()">🚫 No</button>
+        </div>
+        <div id="warning-text"></div>
+    </div>
+
+    <script>
+        let currentStep = 0;
+        let noTextIndex = 0;
+
+        let stats = {
+            step1: { yesClicks: 0, noClicks: 0 },
+            step2: { yesClicks: 0, noClicks: 0 },
+            step3: { yesClicks: 0, noClicks: 0 },
+            finalAnswer: ''
+        };
+
+        const steps = [
+            {
+                title: "9 - 1 =8 လားမမ ?❤️",
+                img: "https://media1.tenor.com/m/J9mOaXMbKygAAAAC/mochi-pet.gif"
+            },
+            {
+                title: "တကယ် ချစ်တာလား ဟိဟိ ? 🤔",
+                img: "https://media.tenor.com/818cyhOFGhQAAAAi/peach-and-goma-peach-and-goma-heart.gif"
+            },
+            {
+                title: "ဟိ..ဒါဆိုမမ ကျတော့ရည်းစားလေးဖြစ်ပြီနော်..",
+                img: "https://media.tenor.com/JxLxjfxu1O0AAAAi/blanket-mochi-cat.gif"
+            }
+        ];
+
+        const noButtonTexts = [
+            "🚫 No",
+            "စဉ်းစားဦးလေ 🤭",
+            "မမရယ် မငြင်းပါနဲ့ 🥺",
+            "သေချာလို့လား 🤔",
+            "မရဘူးလေ 😜",
+            "Yes ပဲနှိပ်ပါတော့ 💖"
+        ];
+
+        const warnings = [
+            "ဟိတ်... No ကိုနှိပ်လို့မရဘူးနော်! 😜",
+            "စဉ်းစားဉီးလေ မမရယ်... တခြားဟာရွေးလိုက်! 🤭",
+            "မရဘူးလေ၊ Yes ပဲနှိပ်ရမယ်! 💖",
+            "နောက်တစ်ခါ ထပ်မနှိပ်နဲ့တော့နော်! 😤",
+            "မငြင်းနဲ့တော့၊ ချစ်တယ်လို့ပြောလိုက်တော့! 🥰"
+        ];
+
+        function handleNo() {
+            const noBtn = document.getElementById('noBtn');
+
+            if (currentStep === 0) {
+                stats.step1.noClicks++;
+                noTextIndex = (noTextIndex + 1) % noButtonTexts.length;
+                noBtn.innerText = noButtonTexts[noTextIndex];
+                showWarning();
+            } else if (currentStep === 1) {
+                stats.step2.noClicks++;
+                moveNoButton(); // နှိပ်လိုက်မှ Screen ပေါ် လွတ်ရာပြေးမည်
+                showWarning();
+            } else if (currentStep === 2) {
+                stats.step3.noClicks++;
+                noBtn.innerText = "💖 Yes";
+                noBtn.style.background = "linear-gradient(135deg, rgba(255, 65, 108, 0.95), rgba(255, 75, 43, 0.95))";
+                noBtn.style.color = "white";
+                noBtn.onclick = handleYes;
+                noBtn.style.position = 'static';
+                
+                document.getElementById('warning-text').innerText = " No လေးက Yes ဖြစ်သွားပြီ! 🥰";
+            }
+        }
+
+        // ဒုတိယအဆင့်အတွက် နှိပ်လိုက်တိုင်း Screen အပြင်မထွက်ဘဲ လွတ်ရာပြေးမည့် ဖန်ရှင်
+        function moveNoButton() {
+            if (currentStep === 1) {
+                const noBtn = document.getElementById('noBtn');
+                
+                if (noBtn.style.position !== 'fixed') {
+                    noBtn.style.position = 'fixed';
+                }
+
+                const btnWidth = noBtn.offsetWidth || 120;
+                const btnHeight = noBtn.offsetHeight || 50;
+                
+                const padding = 30;
+                const maxX = window.innerWidth - btnWidth - padding;
+                const maxY = window.innerHeight - btnHeight - padding;
+                const minX = padding;
+                const minY = padding;
+
+                const randomX = Math.floor(Math.random() * (maxX - minX)) + minX;
+                const randomY = Math.floor(Math.random() * (maxY - minY)) + minY;
+
+                noBtn.style.left = randomX + 'px';
+                noBtn.style.top = randomY + 'px';
+            }
+        }
+
+        function showWarning() {
+            const warningDiv = document.getElementById('warning-text');
+            const randomWarning = warnings[Math.floor(Math.random() * warnings.length)];
+            warningDiv.innerText = randomWarning;
+        }
+
+        function handleYes() {
+            if (currentStep === 0) stats.step1.yesClicks++;
+            else if (currentStep === 1) stats.step2.yesClicks++;
+            else if (currentStep === 2) stats.step3.yesClicks++;
+
+            currentStep++;
+            if (currentStep < steps.length) {
+                updateUI();
+            } else {
+                showFinal();
+            }
+        }
+
+        function updateUI() {
+            const step = steps[currentStep];
+            document.getElementById('main-title').innerText = step.title;
+            document.getElementById('main-gif').src = step.img;
+            document.getElementById('warning-text').innerText = "";
+
+            noTextIndex = 0;
+            const noBtn = document.getElementById('noBtn');
+            noBtn.innerText = "🚫 No";
+            noBtn.style.background = "rgba(255, 255, 255, 0.3)";
+            noBtn.style.color = "#fff";
+            noBtn.style.position = 'static';
+            noBtn.style.left = 'auto';
+            noBtn.style.top = 'auto';
+            noBtn.onclick = handleNo;
+        }
+
+        function showFinal() {
+            const container = document.getElementById('main-container');
+            container.innerHTML = `
+                <div class="paper-note">
+                    <h2>A Special For Mama 💌</h2>
+                    <div class="paper-content" id="typed-text"></div>
+                    <div id="final-section">
+                        <p>ကျတော့ကိုချစ်နိုင်မလား? 🥺💖</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+
+            const message = `ကျတော့ဘက်ယိမ်းဖို့
+ဆွယ်တဲ့စကားမဟုတ်ပါဘူး
+အမဘက်ပါချင်လို့  
+ခွင့်တောင်းတဲ့စကားပါ
+
+`;
+
+            let i = 0;
+            const speed = 20;
+            const textElement = document.getElementById('typed-text');
+
+            function typeWriter() {
+                if (i < message.length) {
+                    textElement.innerHTML += message.charAt(i);
+                    i++;
+                    const paperNote = document.querySelector('.paper-note');
+                    paperNote.scrollTop = paperNote.scrollHeight;
+                    setTimeout(typeWriter, speed);
+                } else {
+                    document.getElementById('final-section').style.display = 'block';
+                    const paperNote = document.querySelector('.paper-note');
+                    paperNote.scrollTop = paperNote.scrollHeight;
+                }
+            }
+
+            typeWriter();
+        }
+
+        function submitFinalAnswer(answer) {
+            stats.finalAnswer = answer;
+
+            const finalSection = document.getElementById('final-section');
+            finalSection.innerHTML = `<p style="color: #27ae60; font-weight: bold; text-align: center;">ကျေးဇူးတင်ပါတယ်ရှင်... အဖြေကို ပို့ဆောင်နေပါပြီ ရှင် 💌</p>`;
+
+            const formData = {
+                "Step 1 (ပြန်ချစ်ပါလားမမရယ်)": `Yes clicks: ${stats.step1.yesClicks}, No clicks: ${stats.step1.noClicks}`,
+                "Step 2 (တကယ်ရော စဉ်းစားပြီးပြီလား)": `Yes clicks: ${stats.step2.yesClicks}, No clicks: ${stats.step2.noClicks}`,
+                "Step 3 (နောက်ဆုံးတစ်ခါ ထပ်မေးမယ်)": `Yes clicks: ${stats.step3.yesClicks}, No clicks: ${stats.step3.noClicks}`,
+                "Final Question Answer (အချစ်ကိုလက်ခံမလား)": stats.finalAnswer
+            };
+
+            fetch('', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                },
+                body: JSON.stringify(formData)
+            })
+            .then(response => {
+                showThankYouScreen();
+            })
+            .catch(error => {
+                showThankYouScreen();
+            });
+        }
+
+        function showThankYouScreen() {
+            const container = document.getElementById('main-container');
+            container.innerHTML = `
+                <div class="paper-note" style="text-align: center; padding: 25px 20px;">
+                    <img src="https://media.tenor.com/PDgDW-nFIpsAAAAi/peach-goma.gif" alt="Happy GIF" style="width:120px; height:120px; border-radius:20px; box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2); border: 2px solid #dcd1b5; margin-bottom: 10px;">
+                    <h2 style="border: none; color: #d63031; margin-bottom: 5px;">Done</h2>
+                    <p style="font-size: 14px; color: #444; line-height: 22px; font-weight: 500; margin: 5px 0 15px 0;">
+                        အဖြေနဲ့ အချက်အလက်များကိုအောင်မြင်စွာပို့ဆောင်ပြီးပါပြီ။
+                    </p>
+
+                    <!-- အရှေ့မှာ ဘယ်လိုနှိပ်ခဲ့တယ်ဆိုတဲ့ List အသေးစိတ် -->
+                    <div class="stats-box">
+                        <h3>📋 နှိပ်ခဲ့သော မှတ်တမ်းအကျဉ်းချုပ်</h3>
+                        <ul>
+                            <li><b>အဆင့် (၁):</b> Yes (${stats.step1.yesClicks} ကြိမ်) | No (${stats.step1.noClicks} ကြိမ်)</li>
+                            <li><b>အဆင့် (၂):</b> Yes (${stats.step2.yesClicks} ကြိမ်) | No (${stats.step2.noClicks} ကြိမ်)</li>
+                            <li><b>အဆင့် (၃):</b> Yes (${stats.step3.yesClicks} ကြိမ်) | No (${stats.step3.noClicks} ကြိမ်)</li>
+                            <li><b>နောက်ဆုံးအဖြေ:</b> <span style="color: #d63031; font-weight: bold;">${stats.finalAnswer} (${stats.finalAnswer === 'Yes' ? 'လက်ခံပါတယ် 💖' : 'စဉ်းစားဦးမယ် 🤭'})</span></li>
+                        </ul>
+                    </div>
+                </div>
+            `;
+        }
+    </script>
+</body>
+</html>
